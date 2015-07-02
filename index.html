@@ -22,8 +22,8 @@
 			<div class="modal-box">
 				<div class="modal-header">Login</div>
 				<div class = "modal-content">
-					<input type = "text" name = "userInput" class = "modal-inputBox" placeholder = "Enter Username" />
-					<input type = "text" name = "passInput" class = "modal-inputBox" placeholder = "Enter Password" />
+					<input type = "text" name = "login-username" class = "modal-inputBox" placeholder = "Enter Username" />
+					<input type = "password" name = "login-password" class = "modal-inputBox" placeholder = "Enter Password" />
 				</div>
 				<div class = "modal-footer">
 					<div class = "modal-button" id = "login-submit">Submit</div>
@@ -36,18 +36,23 @@
 	</div>
 	<div class ="modal-container" id = "signup-modal-container">
 		<div class ="modal-overlay" id = "signup-modal-overlay"></div>
-			<div class="modal-box">
-				<div class="modal-header">Login</div>
+			<div class="modal-box" id = "signup-modal-box">
+				<div class="modal-header">Sign Up</div>
 				<div class = "modal-content">
-					<input type = "text" name = "userInput" class = "modal-inputBox" placeholder = "Enter Username" />
-					<input type = "text" name = "passInput" class = "modal-inputBox" placeholder = "Enter Password" />
-				</div>
-				<div class = "modal-footer">
-					<div class = "modal-button" id = "login-submit">Submit</div>
-					<div class = "modal-button" id = "login-cancel">Cancel</div>
+                    <input type = "text" name = "signup-fname" class = "modal-inputBox" placeholder = "First Name" />
+                    <input type = "text" name = "signup-lname" class = "modal-inputBox" placeholder = "Last Name" />
+					<input type = "text" name = "signup-username" class = "modal-inputBox" placeholder = "Enter username" />
+					<input type = "password" name = "signup-password" class = "modal-inputBox" placeholder = "Enter Password" />
+                    <input type = "password" name = "signup-password-verify" class = "modal-inputBox" placeholder = "Enter Password Again" />
+                    <input type = "text" name = "signup-email" class = "modal-inputBox" placeholder = "Email" />
 
 				</div>
-                    <div class = "error"id = "signup-error"> The username and/or password is not valid!</div>
+				<div class = "modal-footer">
+					<div class = "modal-button" id = "signup-submit">Submit</div>
+					<div class = "modal-button" id = "signup-cancel">Cancel</div>
+
+				</div>
+                    <div class = "error" id = "signup-error">Hi there</div>
 
 			</div>
 	</div>

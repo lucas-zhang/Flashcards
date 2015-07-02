@@ -27,12 +27,61 @@ $(document).ready(function(){
 	});
 
 
+    $("#login-submit").click(function(e) {
+         $.ajax({
+            type: "POST",
+            url: "/login",
+            data: {"": $("input[name='login-username']").val(), "password":$("input[name='login-password']").val()}
 
-	 $("#login-submit").click(function(e) {
+        })
+
+        .done(function(string) {
+            if (string == "success"){
+                    redirect("profile")
+                } else {
+                    $("#login-error").fadeIn(500)
+                }
+
+
+        });
+       e.preventDefault();
+     });
+
+    $("#signup-link").click(function() {
+        $("#signup-modal-container").show();
+                
+    });
+    // IMPLEMENT "HIDE MODAL" WHEN "CLICK ON SUBMIT BUTTON FROM MODAL BOX" HERE
+    // IMPLEMENT "HIDE MODAL" WHEN "CLICK ON CANCEL BUTTON FROM MODAL BOX" HERE
+
+    $("#signup-cancel").click(function() {
+        $("#signup-modal-container").hide();
+    });
+
+
+    
+    
+    // Question 5
+    // IMPLEMENT "HIDE MODAL" WHEN "CLICK ON MODAL OVERLAY" HERE
+    $("#signup-modal-overlay").click(function() {
+        $("#signup-modal-container").hide();
+    });
+
+
+
+
+	 $("#signup-submit").click(function(e) {
 	     $.ajax({
 	        type: "POST",
-		 	url: "/login",
-		 	data: {"username": $("input[name='userInput']").val(), "password":$("input[name='passInput']").val()}
+		 	url: "/signup",
+		 	data: {
+                "username": $("input[name='signup-username']").val(), 
+                "password":$("input[name='signup-password']").val(),
+                "password2":$("input[name='signup-password-verify']").val(), 
+                "fname":$("input[name='signup-fname']").val(), 
+                "lname":$("input[name='signup-lname']").val(), 
+                "email":$("input[name='signup-email']").val()
+            }
 
    	    })
 
@@ -40,9 +89,12 @@ $(document).ready(function(){
 	        if (string == "success"){
                     redirect("profile")
                 } else {
-                    $("#login-error").fadeIn(500)
-                }
+                    $("#signup-error").text(string)
 
+                    setTimeout(function(){
+                        $("#signup-error").fadeIn(500)
+                    }, 5)
+                }
 
 	    });
 	   e.preventDefault();

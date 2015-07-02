@@ -182,12 +182,16 @@ background: #edeae5;
 }
 
 .error {
-
     font-size: 18px;
     color: #FF0000;
     padding: 10px;
     margin-top: 15px;
     text-align: center;
     display: none;
+}
+
+#signup-modal-box {
+    height: 580px;
+    top: 140px;
 }
 
