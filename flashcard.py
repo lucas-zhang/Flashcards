@@ -20,17 +20,24 @@ class Flashcard(object):
 
     @cherrypy.expose
     def login(self, username, password):
-        if self.isValidCred(username, password):
-            return "success"
-        else:
-          return "failure"
+        fields = [username, password]
+        if not self.areFieldsFull(fields):
+            return "You have a missing field. Please fill in both fields!"
+        if not self.isValidCred(username, password):
+            return "Your username and/or password are incorrect!"
+
+        return "success"
 
     @cherrypy.expose
     def signup(self, username, password, password2, fname, lname, email):
+            print (type(username))
+            fields = [username, password, password2, fname, lname, email]
+            if not self.areFieldsFull(fields):
+                return "You have a missing field. Please fill in all fields!"
 
             if password != password2:
                 return "The passwords you entered don't match!"
-            curs.execute("SELECT * FROM user WHERE username = %s", username)
+            curs.execute("SELECT * FROM user WHERE username = '%s'" %username)
             userRow = curs.fetchone()
             if userRow is not None:
                 return "You must choose a different username!"
@@ -44,8 +51,15 @@ class Flashcard(object):
     def isValidCred(self, username, password):
             curs.execute("SELECT * FROM user WHERE username = '%s'" %username)
             userRow= curs.fetchone()
-            return userRow is not None and userRow[4] == password 
+            print(userRow)
+            return userRow is not None and userRow[2] == password 
 
+    def areFieldsFull(self, fields):
+        for field in fields:
+            if field == "":
+                return False
+
+        return True
     @cherrypy.expose
     def profile(self, userID=None):
         return """<html><body>THIS IS THE PROFILE PAGE</body></html>"""

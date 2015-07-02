@@ -8,6 +8,8 @@ $(document).ready(function(){
 
 	$("#login-link").click(function() {
  		$("#login-modal-container").show();
+        setTimeout(function(){$("input[name='login-username']").focus()},5);
+        
                 
 	});
 	// IMPLEMENT "HIDE MODAL" WHEN "CLICK ON SUBMIT BUTTON FROM MODAL BOX" HERE
@@ -15,6 +17,7 @@ $(document).ready(function(){
 
 	$("#login-cancel").click(function() {
  		$("#login-modal-container").hide();
+        $("#login-error").hide();
 	});
 
 
@@ -24,31 +27,58 @@ $(document).ready(function(){
 	// IMPLEMENT "HIDE MODAL" WHEN "CLICK ON MODAL OVERLAY" HERE
 	$("#login-modal-overlay").click(function() {
  		$("#login-modal-container").hide();
+        $("#login-error").hide();
 	});
 
 
-    $("#login-submit").click(function(e) {
-         $.ajax({
-            type: "POST",
-            url: "/login",
-            data: {"": $("input[name='login-username']").val(), "password":$("input[name='login-password']").val()}
+    function login(e) {
+        $("#login-error").hide();
 
-        })
+        $.ajax({
+        type: "POST",
+        url: "/login",
+        data: {"username": $("input[name='login-username']").val(), "password":$("input[name='login-password']").val()}
 
-        .done(function(string) {
-            if (string == "success"){
-                    redirect("profile")
-                } else {
+         })
+
+    .done(function(string) {
+        if (string == "success"){
+                redirect("profile")
+            } else {
+                $("#login-error").text(string)
+
+                setTimeout(function(){
                     $("#login-error").fadeIn(500)
-                }
+                }, 5)
+            }
 
 
         });
        e.preventDefault();
-     });
+    }
+    $("#login-submit").click(login);
+
+    $("input[name='login-username']").keyup(function (e) {
+        console.log(e.keyCode);
+        if (e.keyCode == 13) {
+            login(e);
+        }
+    });
+    $("input[name='login-password']").keyup(function (e) {
+        if (e.keyCode == 13) {
+            login(e);
+        }
+    });
+
+
+
+//SIGNUPS
+
+
 
     $("#signup-link").click(function() {
         $("#signup-modal-container").show();
+        setTimeout(function(){$("input[name='signup-fname']").focus()},5);
                 
     });
     // IMPLEMENT "HIDE MODAL" WHEN "CLICK ON SUBMIT BUTTON FROM MODAL BOX" HERE
@@ -56,6 +86,7 @@ $(document).ready(function(){
 
     $("#signup-cancel").click(function() {
         $("#signup-modal-container").hide();
+        $("#signup-error").hide();
     });
 
 
@@ -65,16 +96,17 @@ $(document).ready(function(){
     // IMPLEMENT "HIDE MODAL" WHEN "CLICK ON MODAL OVERLAY" HERE
     $("#signup-modal-overlay").click(function() {
         $("#signup-modal-container").hide();
+        $("#signup-error").hide();
     });
 
 
 
-
-	 $("#signup-submit").click(function(e) {
-	     $.ajax({
-	        type: "POST",
-		 	url: "/signup",
-		 	data: {
+    function signup(e) {
+            $("#signup-error").hide();
+            $.ajax({
+            type: "POST",
+            url: "/signup",
+            data: {
                 "username": $("input[name='signup-username']").val(), 
                 "password":$("input[name='signup-password']").val(),
                 "password2":$("input[name='signup-password-verify']").val(), 
@@ -83,10 +115,10 @@ $(document).ready(function(){
                 "email":$("input[name='signup-email']").val()
             }
 
-   	    })
+        })
 
-	    .done(function(string) {
-	        if (string == "success"){
+        .done(function(string) {
+            if (string == "success"){
                     redirect("profile")
                 } else {
                     $("#signup-error").text(string)
@@ -96,7 +128,46 @@ $(document).ready(function(){
                     }, 5)
                 }
 
-	    });
-	   e.preventDefault();
-	 });
+        });
+       e.preventDefault();
+    }
+
+
+	$("#signup-submit").click(signup);
+
+    $("input[name='signup-username']").keyup(function (e) {
+        console.log(e.keyCode);
+        if (e.keyCode == 13) {
+            signup(e);
+        }
+    });
+    $("input[name='signup-password']").keyup(function (e) {
+        if (e.keyCode == 13) {
+            signup(e);
+        }
+    });
+
+    $("input[name='signup-fname']").keyup(function (e) {
+        console.log(e.keyCode);
+        if (e.keyCode == 13) {
+            signup(e);
+        }
+    });
+    $("input[name='signup-lname']").keyup(function (e) {
+        if (e.keyCode == 13) {
+            signup(e);
+        }
+    });
+    $("input[name='signup-password-verify']").keyup(function (e) {
+        console.log(e.keyCode);
+        if (e.keyCode == 13) {
+            signup(e);
+        }
+    });
+    $("input[name='signup-email']").keyup(function (e) {
+        if (e.keyCode == 13) {
+            signup(e);
+        }
+    });
+	 
 });
