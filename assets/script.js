@@ -22,17 +22,17 @@ $(document).ready(function(){
 	
 	// Question 5
 	// IMPLEMENT "HIDE MODAL" WHEN "CLICK ON MODAL OVERLAY" HERE
-	$("#modal-overlay").click(function() {
- 		$(".modal-container").hide();
+	$("#login-modal-overlay").click(function() {
+ 		$("#login-modal-container").hide();
 	});
 
 
 
 	 $("#login-submit").click(function(e) {
 	     $.ajax({
-	         type: "POST",
-		 url: "/login",
-		 data: {"username": $("input[name='userInput']").val(), "password":$("input[name='passInput']").val()}
+	        type: "POST",
+		 	url: "/login",
+		 	data: {"username": $("input[name='userInput']").val(), "password":$("input[name='passInput']").val()}
 
    	    })
 

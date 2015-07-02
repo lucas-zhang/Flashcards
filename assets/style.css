@@ -133,16 +133,16 @@ background: #edeae5;
 
 .modal-box {
     width: 520px;
-    height: 300px;
+    height: 320px;
     background-color: #649BD9;
     position: absolute;
-    z-index: 100;
+    z-index: 1000;
     margin: 0 auto;
     left: calc(50% - 250px);
     top: calc(50% - 130px);
 
 }
-#modal-header {
+.modal-header {
     margin: 15px 0px 15px 18px;
     color: white;
     font-size: 24px;
@@ -181,11 +181,11 @@ background: #edeae5;
     color: white;
 }
 
-#error {
+.error {
+
     font-size: 18px;
     color: #FF0000;
-    padding: 10px
-    width: 400px;
+    padding: 10px;
     margin-top: 15px;
     text-align: center;
     display: none;
