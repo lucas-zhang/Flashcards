@@ -6,6 +6,31 @@ $(document).ready(function(){
 	// Question 4
 	// IMPLEMENT "SHOW MODAL" WHEN "CLICK ON LOGIN BUTTON FROM MAIN PAGE" HERE
 
+    $(document).keyup(function(e) {
+        if (e.keyCode == 27) { // escape key maps to keycode `27`
+            $("#login-modal-container").hide();
+            $("#signup-modal-container").hide();
+            setTimeout($("#login-error").hide(), 5);
+            setTimeout($("#signup-error").hide(), 5);
+            setTimeout(clearSignupFields, 5);
+            setTimeout(clearLoginFields, 5);
+        }
+    });
+
+    function clearLoginFields() {
+        $("input[name='login-username']").val("");
+        $("input[name='login-password']").val("");
+    }
+
+    function clearSignupFields(){
+        $("input[name='signup-username']").val("");
+        $("input[name='signup-password']").val("");
+        $("input[name='signup-fname']").val("");
+        $("input[name='signup-lname']").val("");
+        $("input[name='signup-email']").val("");
+        $("input[name='signup-password-verify']").val("");
+    }
+
 	$("#login-link").click(function() {
  		$("#login-modal-container").show();
         setTimeout(function(){$("input[name='login-username']").focus()},5);
@@ -18,6 +43,7 @@ $(document).ready(function(){
 	$("#login-cancel").click(function() {
  		$("#login-modal-container").hide();
         $("#login-error").hide();
+        setTimeout(clearLoginFields, 5);
 	});
 
 
@@ -28,6 +54,7 @@ $(document).ready(function(){
 	$("#login-modal-overlay").click(function() {
  		$("#login-modal-container").hide();
         $("#login-error").hide();
+        setTimeout(clearLoginFields, 5);
 	});
 
 
@@ -87,6 +114,7 @@ $(document).ready(function(){
     $("#signup-cancel").click(function() {
         $("#signup-modal-container").hide();
         $("#signup-error").hide();
+        setTimeout(clearSignupFields, 5);
     });
 
 
@@ -97,6 +125,7 @@ $(document).ready(function(){
     $("#signup-modal-overlay").click(function() {
         $("#signup-modal-container").hide();
         $("#signup-error").hide();
+        setTimeout(clearSignupFields, 5);
     });
 
 
