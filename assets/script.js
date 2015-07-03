@@ -209,11 +209,13 @@ $(document).ready(function(){
 
          })
 
-    .done(function(string) {
-        redirect("");
+        .done(function(string) {
+            console.log(string)
 
         });
        e.preventDefault();
     }
+
+    $("#logout-link").click(logout);
 	 
 });

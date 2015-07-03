@@ -16,8 +16,11 @@ class Flashcard(object):
 
     @cherrypy.expose
     def index(self):
-        primes = [2, 3, 5, 7, 11, 13, 17]
-        return open('index.html', 'r').read()
+        name = cherrypy.session["userID"]
+        if name is not None:
+
+        else:
+            return open('index.html', 'r').read()
 
     @cherrypy.expose
     def login(self, username, password):
@@ -30,11 +33,17 @@ class Flashcard(object):
         curs.execute("SELECT * FROM user WHERE username = '%s'" %username)
         userRow= curs.fetchone()
         userID = userRow[0]
-        hash = self.hashUserID(userID)
+        userHash = self.hashUserID(userID)
         cherrypy.session['userID'] = userID
-        cherrypy.session['hash'] = hash
+        cherrypy.session['userHash'] = userHash
 
         return "success"
+
+    @cherrypy.expose
+    def logout(self):
+        cherrypy.lib.sessions.expire()
+        return "success"
+        
 
 
     @cherrypy.expose
@@ -60,18 +69,18 @@ class Flashcard(object):
 
     @cherrypy.expose
     def profile(self):
-        if self.hashUserID(cherrypy.session['userID']) != cherrypy.session['hash']:
+        if self.hashUserID(cherrypy.session['userID']) != cherrypy.session['userHash']:
+            self.logout()
             raise cherrypy.HTTPRedirect("/")
-            return
 
         curs.execute("SELECT * FROM user WHERE id = %s" %cherrypy.session['userID'])
         userRow= curs.fetchone()
 
+        return(str(cherrypy.session['userID']))
+
 
 
         #return open('profile.html', 'r').read()
-
-
 
 #Helper functions below
     def hashUserID(self, userID):
