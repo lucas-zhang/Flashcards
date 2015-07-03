@@ -1,5 +1,6 @@
 $(document).ready(function(){
-	
+	clearLoginFields();
+    clearSignupFields();
         function redirect(relativePath) {
                 window.location = "http://localhost:8080/" + relativePath
         }
@@ -198,5 +199,21 @@ $(document).ready(function(){
             signup(e);
         }
     });
+
+    //LOGOUT
+
+    function logout(e) {
+        $.ajax({
+        type: "POST",
+        url: "/logout",
+
+         })
+
+    .done(function(string) {
+        redirect("");
+
+        });
+       e.preventDefault();
+    }
 	 
 });
