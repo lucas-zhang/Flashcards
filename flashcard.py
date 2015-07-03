@@ -3,6 +3,10 @@ import os, os.path
 import random
 import MySQLdb as mdb
 
+import cherrypy
+from jinja2 import Environment, FileSystemLoader
+env = Environment(loader=FileSystemLoader(''))
+
 conn = mdb.connect("localhost","root","lzdbpass","lucas_test")
 curs = conn.cursor()
 
@@ -16,11 +20,9 @@ class Flashcard(object):
 
     @cherrypy.expose
     def index(self):
-        name = cherrypy.session["userID"]
-        if name is not None:
-
-        else:
-            return open('index.html', 'r').read()
+        tmpl = env.get_template('index.html')
+        return tmpl.render(items=[1, 2, 3, 4])
+#        return open('index.html', 'r').read()
 
     @cherrypy.expose
     def login(self, username, password):
