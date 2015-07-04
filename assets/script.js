@@ -1,9 +1,9 @@
 $(document).ready(function(){
 	clearLoginFields();
     clearSignupFields();
-        function redirect(relativePath) {
-                window.location = "http://localhost:8080/" + relativePath
-        }
+    function redirect(relativePath) {
+            window.location.replace("http://localhost:8080/" + relativePath);
+    }
 	// Question 4
 	// IMPLEMENT "SHOW MODAL" WHEN "CLICK ON LOGIN BUTTON FROM MAIN PAGE" HERE
 
@@ -73,10 +73,10 @@ $(document).ready(function(){
         if (string == "success"){
                 redirect("profile")
             } else {
-                $("#login-error").text(string)
+                $("#login-error").text(string);
 
                 setTimeout(function(){
-                    $("#login-error").fadeIn(500)
+                    $("#login-error").fadeIn(500);
                 }, 5)
             }
 
@@ -148,15 +148,16 @@ $(document).ready(function(){
         })
 
         .done(function(string) {
-            if (string == "success"){
-                    redirect("profile")
-                } else {
-                    $("#signup-error").text(string)
+            if (string == "success") {
+                redirect("profile")
+            }
+            else{
+                $("#signup-error").text(string);
 
-                    setTimeout(function(){
-                        $("#signup-error").fadeIn(500)
-                    }, 5)
-                }
+                setTimeout(function(){
+                    $("#signup-error").fadeIn(500);
+                }, 5)
+            }
 
         });
        e.preventDefault();
@@ -210,7 +211,7 @@ $(document).ready(function(){
          })
 
         .done(function(string) {
-            console.log(string)
+            redirect("");
 
         });
        e.preventDefault();

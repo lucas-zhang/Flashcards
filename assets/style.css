@@ -32,8 +32,8 @@ a:hover {
 .topbar ul {
     list-style: none;
     height: 100%;
-
 }
+
 .topbar-item {
     position: relative; 
     left: 15px;
@@ -193,5 +193,28 @@ background: #edeae5;
 #signup-modal-box {
     height: 580px;
     top: 140px;
+}
+
+#login-link{
+    left: 1020px;
+}
+
+#signup-link {
+    left: 1050px;
+}
+
+#logout-link {
+    left: 1020px;
+}
+
+#message {
+    color: white;
+    width: 250px;
+    letter-spacing: 2px;
+    position: fixed;
+    z-index: 10000;
+    top: 100px;
+    font-size: 12px;
+    right: 20px;
 }
 

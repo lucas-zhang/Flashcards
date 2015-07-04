@@ -21,8 +21,23 @@ class Flashcard(object):
     @cherrypy.expose
     def index(self):
         tmpl = env.get_template('index.html')
-        return tmpl.render(items=[1, 2, 3, 4])
-#        return open('index.html', 'r').read()
+
+        templateVars = {}
+
+        userID = cherrypy.session.get('userID')
+
+        if userID is not None:
+            curs.execute("SELECT * FROM user WHERE id = %s" %userID)
+            userRow = curs.fetchone()
+            templateVars['toggle'] = "loggedIn"
+            templateVars['fname'] = userRow[3]
+
+        else:
+            templateVars['toggle'] = "default"
+
+
+        return tmpl.render(templateVars)
+#       
 
     @cherrypy.expose
     def login(self, username, password):
@@ -66,19 +81,30 @@ class Flashcard(object):
                         VALUES('%s', '%s', '%s', '%s', '%s')""" 
                         %(username, password, fname, lname, email))
         conn.commit()
+        self.login(username, password)
         return "success"
+        
 
 
     @cherrypy.expose
     def profile(self):
-        if self.hashUserID(cherrypy.session['userID']) != cherrypy.session['userHash']:
-            self.logout()
-            raise cherrypy.HTTPRedirect("/")
+        userID = cherrypy.session.get('userID')
+        if userID is not None:
 
-        curs.execute("SELECT * FROM user WHERE id = %s" %cherrypy.session['userID'])
-        userRow= curs.fetchone()
+            tmpl = env.get_template('profile.html')
+            templateVars = {}
+            """
+                if self.hashUserID(cherrypy.session['userID']) != cherrypy.session['userHash']:
+                self.logout()
+                raise cherrypy.HTTPRedirect("/")
+            """
 
-        return(str(cherrypy.session['userID']))
+            curs.execute("SELECT * FROM user WHERE id = %s" %cherrypy.session.get('userID'))
+            userRow= curs.fetchone()
+            templateVars['fname'] = userRow[3]
+
+            return tmpl.render(templateVars)
+        raise cherrypy.HTTPRedirect("/")
 
 
 

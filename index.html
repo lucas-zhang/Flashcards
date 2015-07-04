@@ -1,25 +1,34 @@
 <html>
 <head>
-<title>Positioning Haven</title>
+<title>Flashcards</title>
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="/static/style.css" />
 <script src="/static/jquery-1.9.1.js"></script>
 <script src="/static/script.js"></script>
 </head>
 <body>
-    <nav class = "topbar">
-        <ul>
-            {% for item in items %}
-                <div> {{item}} </div>
-            {% endfor %}
-            <li class = "topbar-item" ><a id = "on-page" href = "/">Home </a></li>
-            <li class = "topbar-item"><a href = "/quick"> Quick Make</a></li>
-            <li class = "topbar-item" id = "login-link"><a id = "login-link"> Login</a></li>
-            <li class = "topbar-item" id = "signup-link"><a id = "signup-link"> Sign Up</a></li>
-            <li class = "topbar-item" id = "logout-link"><a id = "logout-link"> Logout</a></li>
+    {% if toggle == "default" %}
+        <nav class = "topbar">
+            <ul>
+                <li class = "topbar-item" ><a id = "on-page" >Home </a></li>
+                <li class = "topbar-item" id = "login-link"><a id = "login-link"> Login</a></li>
+                <li class = "topbar-item" id = "signup-link"><a id = "signup-link"> Sign Up</a></li>
 
-        </ul>
-    </nav>
+            </ul>
+        </nav>
+        <div id = "message"> Please login or signup to view and create your flashcards. </div>
+
+    {% else %}
+        <nav class = "topbar">
+            <ul>
+                <li class = "topbar-item" ><a id = "on-page">Home </a></li>
+                <li class = "topbar-item"><a href = "/profile">Profile</a></li>
+                <li class = "topbar-item" id = "logout-link"><a id = "logout-link"> Logout</a></li>
+            </ul>
+        </nav>
+        <div id = "message">Hi {{fname}}! Hit 'View Flashcards' to see your decks and profile. </div>
+
+    {% endif %}
 	<!-- Login Modal Box -->
 	<div class ="modal-container" id = "login-modal-container">
 		<div class ="modal-overlay" id = "login-modal-overlay"></div>
@@ -48,7 +57,7 @@
 					<input type = "text" name = "signup-username" class = "modal-inputBox" placeholder = "Enter Username" />
 					<input type = "password" name = "signup-password" class = "modal-inputBox" placeholder = "Enter Password" />
                     <input type = "password" name = "signup-password-verify" class = "modal-inputBox" placeholder = "Enter Password Again" />
-                    <input type = "text" name = "signup-email" class = "modal-inputBox" placeholder = "Email" />
+                    <input type = "email" name = "signup-email" class = "modal-inputBox" placeholder = "Email" />
 
 				</div>
 				<div class = "modal-footer">
