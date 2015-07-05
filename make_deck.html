@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>Flashcards</title>
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="assets/style.css" />
+<link rel="stylesheet" type="text/css" href="assets/profile.css" />
+<link rel="stylesheet" type="text/css" href="assets/make_deck.css" />
+<script src="assets/jquery-1.9.1.js"></script>
+<script src="assets/profile.js"></script>
+<script src="assets/make_deck.js"></script>
+</head>
+<body>
+    <nav class = "topbar">
+        <ul>
+            <li class = "topbar-item" ><a href = "/">Home </a></li>
+            <li class = "topbar-item" ><a id = "on-page">Profile</a></li>
+            <li class = "topbar-item" id = "logout-link"><a id = "logout-link"> Logout</a></li>
+        </ul>
+    </nav>
+    <div id = "message">Hi {{fname}}! Hit 'View Flashcards' to see your decks and profile. </div>
+    <div class = "welcome-message">Create your very own deck! </div>
+    <input type = "text" id = "deck-title" placeholder = "Enter your deck title"/>
+    <div id = "card-space">
+        <div class = "column-title">Words</div>
+        <div class = "column-title">Definitions</div>
+
+        <div class="card-row">
+            <textarea id="word1" class = "autoExpand" rows='2' data-id="1" data-min-rows='2'></textarea>
+            <textarea id="def1" class = "autoExpand" rows='2' data-id="1" data-min-rows='2'></textarea>
+        </div>
+        <div class="card-row">
+            <textarea class = "autoExpand" rows='2' data-min-rows='2'></textarea>
+            <textarea class = "autoExpand" rows='2' data-min-rows='2'></textarea>
+        </div>
+        <div class="card-row">
+            <textarea class = "autoExpand" rows='2' data-min-rows='2'></textarea>
+            <textarea class = "autoExpand" rows='2' data-min-rows='2'></textarea>
+        </div>
+        <div class="card-row">
+            <textarea class = "autoExpand" rows='2' data-min-rows='2'></textarea>
+            <textarea class = "autoExpand" rows='2' data-min-rows='2'></textarea>
+        </div>
+        <div class="card-row">
+            <textarea class = "autoExpand" rows='2' data-min-rows='2'></textarea>
+            <textarea class = "autoExpand" rows='2' data-min-rows='2'></textarea>
+        </div>
+    </div>
+    <div id = "next-button">+ New Card</div>
+    <div id = "submit-button"> Create Deck</div>
+
+   
+</body>
+
+</html>

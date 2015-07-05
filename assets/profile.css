@@ -1,0 +1,23 @@
+.welcome-message {
+    font-size: 24px;
+    width: 600px;
+    text-align: center;
+    margin: 130 auto 25 auto;
+}
+
+.button-row {
+    text-align: center;
+
+}
+
+.button {
+    cursor: pointer;
+    width: 150px;
+    display: inline-block;
+    padding: 10px 15px 10px 15px;
+    margin-left: 30px;
+    margin-top: 30px;
+    color: black;
+    background-color: #5CE68A;
+    border-radius: 2px;
+}

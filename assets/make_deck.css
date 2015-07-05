@@ -1,0 +1,87 @@
+#deck-title {
+    width: 500;
+    height: 50px;
+    display: block;
+    margin: 0 auto;
+    padding-left: 10px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    border-color: none;
+    outline: none;
+    font-family:"Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif
+}
+
+.welcome-message {
+    margin-top: 150px;
+}
+
+#deck-title:focus {
+    border: 1px solid #0099FF;
+}
+
+.column-title {
+    font-size: 24px;
+    display: inline-block;
+    margin-right: 150;
+    margin-left: 150;
+}
+#card-space {
+    margin-top: 30px;
+    text-align: center;
+}
+.card-row {
+    margin-top: 10px;
+}
+#message {
+    color: black;
+
+}
+
+#next-button {
+    margin-bottom: 30px;
+    position: relative;
+    cursor: pointer;
+    left: 975px;
+    top: 20px;
+    padding: 10 15 10 15;
+    background-color: #39ADFA;
+    color: white;
+    font-size: 18px;
+    width: 120px;
+    border-radius: 2px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.autoExpand{
+    overflow: hidden;
+    padding: 8px;
+    margin-right: 20px;
+    width: 400px;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    resize: none;
+    outline: none;
+    border-color: #D9D5D4;
+}
+.autoExpand:focus {
+    border: 1px solid #0099FF;
+}
+
+#submit-button {
+    position: relative;
+    top: -55;
+    margin: 20 auto 30 auto;
+    cursor: pointer;
+    padding: 10 30 10 30;
+    background-color: #5CE6B8;
+    color: white;
+    font-size: 18px;
+    width: 200px;
+    border-radius: 2px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+
+
