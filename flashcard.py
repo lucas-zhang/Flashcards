@@ -106,6 +106,10 @@ class Flashcard(object):
             return tmpl.render(templateVars)
         raise cherrypy.HTTPRedirect("/")
 
+    def createDeck(self, frontArray, backArray):
+        
+
+
 
 
         #return open('profile.html', 'r').read()

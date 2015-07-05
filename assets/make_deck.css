@@ -13,6 +13,7 @@
 
 .welcome-message {
     margin-top: 150px;
+    letter-spacing: 1px;
 }
 
 #deck-title:focus {
@@ -24,6 +25,7 @@
     display: inline-block;
     margin-right: 150;
     margin-left: 150;
+    letter-spacing: 1px;
 }
 #card-space {
     margin-top: 30px;
@@ -31,6 +33,7 @@
 }
 .card-row {
     margin-top: 10px;
+    margin-bottom: 20px;
 }
 #message {
     color: black;
@@ -42,7 +45,7 @@
     position: relative;
     cursor: pointer;
     left: 975px;
-    top: 20px;
+    top: 30px;
     padding: 10 15 10 15;
     background-color: #39ADFA;
     color: white;
@@ -53,24 +56,25 @@
     text-align: center;
 }
 
-.autoExpand{
+.card-text{
     overflow: hidden;
+    height: 150px;
     padding: 8px;
     margin-right: 20px;
     width: 400px;
-    font-size: 14px;
+    font-size: 12px;
     letter-spacing: 1.5px;
     resize: none;
     outline: none;
     border-color: #D9D5D4;
 }
-.autoExpand:focus {
+.card-text:focus {
     border: 1px solid #0099FF;
 }
 
 #submit-button {
     position: relative;
-    top: -55;
+    top: -45;
     margin: 20 auto 30 auto;
     cursor: pointer;
     padding: 10 30 10 30;
@@ -81,6 +85,25 @@
     border-radius: 2px;
     letter-spacing: 1px;
     text-align: center;
+}
+
+#submit-button:hover {
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    background-color: #6EF0C5;
+    color: black;
+
+}
+
+#next-button:hover {
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    color: black;
+    background-color: #54BBFF;
 }
 
 
