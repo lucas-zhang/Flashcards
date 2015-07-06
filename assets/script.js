@@ -145,7 +145,7 @@ $(document).ready(function(){
                 "email":$("input[name='signup-email']").val()
             }
 
-            })
+        })
 
         .done(function(string) {
             if (string == "success") {

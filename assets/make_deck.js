@@ -4,7 +4,7 @@ $(document).ready(function(){
     $("#deck-title").focus();
 
 
-
+    // Create new card
     $("#next-button").click(function(){
         curr = $(window).scrollTop();
         dest = curr + 160;
@@ -14,6 +14,8 @@ $(document).ready(function(){
         $("#card-space").children(":last-child").children(":first-child").focus();
     
     });
+
+    // Delete card and undo function
     var deletedRows = [];
 
     $(document).on("click", ".exit-img", function() {
@@ -26,7 +28,8 @@ $(document).ready(function(){
     });
 
 
-    $("#submit-button").click(function() {
+    //Create Deck functionality
+    $("#submit-button").click(function(e) {
         var frontArray = [];
         var backArray = [];
         $(".card-text").each(function(index){
@@ -36,12 +39,14 @@ $(document).ready(function(){
                 backArray.push($(this).val());
             }
         });
+
         $.ajax({
             type: "POST",
-            url: "/createDeck",
+            url: "/insertDeck",
             data: {
-                frontArray: frontArray,
-                backArray: backArray
+                "deckTitle": $("#deck-title").val(),
+                "frontArray": JSON.stringify(frontArray),
+                "backArray": JSON.stringify(backArray)
             }
         })
 

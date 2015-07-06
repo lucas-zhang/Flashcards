@@ -2,6 +2,7 @@ import cherrypy
 import os, os.path
 import random
 import MySQLdb as mdb
+import json
 
 import cherrypy
 from jinja2 import Environment, FileSystemLoader
@@ -106,8 +107,44 @@ class Flashcard(object):
             return tmpl.render(templateVars)
         raise cherrypy.HTTPRedirect("/")
 
-    def createDeck(self, frontArray, backArray):
-        
+    @cherrypy.expose
+    def make_deck(self):
+        userID = cherrypy.session.get('userID')
+        if userID is not None:
+
+            tmpl = env.get_template('make_deck.html')
+            templateVars = {}
+
+            curs.execute("SELECT * FROM user WHERE id = %s" %userID)
+            userRow= curs.fetchone()
+            templateVars['fname'] = userRow[3]
+
+            return tmpl.render(templateVars)
+        raise cherrypy.HTTPRedirect("/")
+
+    @cherrypy.expose
+    def insertDeck(self, deckTitle, frontArray, backArray):
+        frontArray = json.loads(frontArray)
+        backArray = json.loads(backArray)
+        userID = cherrypy.session.get('userID')
+        if userID is not None:
+            curs.execute("""INSERT INTO deck (user_id, deck_name) 
+                VALUES(%s, '%s')""" 
+                %(userID, deckTitle))
+
+            curs.execute("SELECT * FROM deck WHERE user_id = %s AND deck_name = '%s'" %(userID, deckTitle))
+            deckRow = curs.fetchone()
+            deckID = deckRow[0]
+            for i in range(len(frontArray)):
+                curs.execute("""INSERT INTO card (deck_id, front, back) 
+                    VALUES(%s, '%s', '%s')""" 
+                    %(deckID, frontArray[i], backArray[i]))
+
+            conn.commit()
+            return "success"
+
+
+        raise cherrypy.HTTPRedirect("/")
 
 
 
