@@ -146,6 +146,50 @@ class Flashcard(object):
 
         raise cherrypy.HTTPRedirect("/")
 
+    @cherrypy.expose
+    def view_decks(self):
+        tmpl = env.get_template('view_decks.html')
+        templateVars = {}
+
+        userID = cherrypy.session.get('userID')
+        if userID is not None:
+            deckTitles = []
+            deckIDs = []
+            curs.execute("SELECT * FROM deck where user_id = %s" %(userID))
+
+            for deckRow in curs.fetchall():
+                deckTitles.append(deckRow[2])
+                deckIDs.append(deckRow[0])
+
+            templateVars['deckTitles'] = deckTitles
+            templateVars['deckIDs'] = deckIDs
+            return tmpl.render(templateVars)
+        raise cherrypy.HTTPRedirect("/")
+
+    @cherrypy.expose
+    def getCards(self, deckID):
+        print("FUNCTION CALLED FUNCTION CALLED FUNCTION CALLED")
+        userID = cherrypy.session.get('userID')
+        if userID is not None:
+            cardData = {}
+            curs.execute("SELECT * FROM card where deck_id = %s" %(deckID))
+            
+            i = 0
+            for cardRow in curs.fetchall():
+                cardData['front' + str(i)] = cardRow[2]
+                cardData['back' + str(i)] = cardRow[3]
+
+                i += 1
+
+            jsonString = json.dumps(cardData)
+            return jsonString
+
+        raise cherrypy.HTTPRedirect("/")
+            
+
+
+
+
 
 
 
