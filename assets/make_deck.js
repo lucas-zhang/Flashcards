@@ -8,7 +8,7 @@ $(document).ready(function(){
     $("#next-button").click(function(){
         curr = $(window).scrollTop();
         dest = curr + 160;
-        var newRow = "<div style = 'display: none' class='card-row'><img src = 'assets/img/x-icon.png' class = 'exit-img'><textarea class = 'card-text'></textarea><textarea class = 'card-text'></textarea></div>";
+        var newRow = "<div style = 'display: none' class='card-row'><img src = '/static/img/x-icon.png' class = 'exit-img'><textarea class = 'card-text'></textarea><textarea class = 'card-text'></textarea></div>";
         $(newRow).appendTo("#card-space").fadeIn('slow');
         $('body, html').animate({scrollTop: dest}, 450);
         $("#card-space").children(":last-child").children(":first-child").focus();
