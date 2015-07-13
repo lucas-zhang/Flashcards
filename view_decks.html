@@ -1,0 +1,327 @@
+<html>
+<head>
+<title>Flashcards</title>
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600" rel="stylesheet" type="text/css"><link href='http://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="/static/style.css" />
+<link rel="stylesheet" type="text/css" href="/static/view_decks.css" />
+<link rel="stylesheet" type="text/css" href="/static/make_deck.css" />
+<script src="/static/jquery-1.9.1.js"></script>
+<script src="/static/view_decks.js"></script>
+<script src="/static/jquery.easing.1.3.js"></script>
+
+</head>
+<body>
+    <nav class = "topbar">
+        <ul>
+            <li class = "topbar-item" ><a href = "/">Home </a></li>
+            <li class = "topbar-item" ><a id = "on-page">Profile</a></li>
+            <li class = "topbar-item" id = "logout-link"><a id = "logout-link"> Logout</a></li>
+        </ul>
+    </nav>
+    <div class = "welcome-message">View your decks!</div>
+
+
+
+    <div id = "list-container">
+        {%set i = 0%}
+        {%for deckTitle in deckTitles%}
+            <div class = "deck-row" data-id = "{{deckIDs[i]}}">
+                <div class = "header-row">
+                    <span class = "list-header" id = "number-header">Deck #</span>
+                    <span class = "list-header" id = "title-header">Deck Title</span>
+                    <span class = "list-header">Date Created</span>
+                </div>
+                <div class = "inner-row">
+                    <span id = "list-deck-number" class = "deck-row-item">{{i + 1}}</span>
+                    <span id = "list-deck-title" class = "deck-row-item">{{deckTitle}}</span>
+                    <div id = "view-list" class = "view-button">View as List</div>
+                    <div id = "view-cards" class = "view-button">View as Cards</div>
+                </div>
+            </div>
+            <div class = "hidden-container">
+                    <div id = "hidden-title-row">
+                        <div class = "hidden-title" id = "hidden-card-num-title">Card #</div>
+                        <div class = "hidden-title">Words</div>
+                        <div class = "hidden-title">Definitions</div>
+                    </div>
+
+            </div>
+
+            {%set i = i + 1%}
+        {%endfor %}
+    </div>
+
+
+    <div id = "card-modal">
+        <div id = "card-view-overlay"></div>
+        <div class = "deck-header">Viewing: example deck</div>
+        <div id = "prev-arrow" class = "card-arrow"><img class = "arrow-image" src = "/static/img/prev_arrow.png"></div>
+        <div id = "next-arrow" class = "card-arrow"><img class = "arrow-image"src = "/static/img/next_arrow.png"></div>
+        <div class = "current-card">
+            <div id = "front">
+                <div id = "front-text">Gregarious
+                </div>
+            </div>
+            <div id = "back">
+                <div id = "back-text">Example Definition                    asf
+                    asf
+
+                    fads
+                    fads
+                    fasd
+                    fasf
+                    asf
+                    sdaf
+                    asdfas
+                    df
+                    sad;fda;lfds;fdask;f;f
+                    Gregariousadsfadsfasfl;adfadsf;asdkljfadsf;sadfadsfads;fasdl;fadfas;dfd;asfa;dlsf;adsf;adsf
+                    asf
+                    asf
+
+                    fads
+                    fads
+                    fasd
+                    fasf
+                    asf
+                    sdaf
+                    asdfas
+                    df
+                    sad;fda;lfds;fdask;f;f
+                    Gregariousadsfadsfasfl;adfadsf;asdkljfadsf;sadfadsfads;fasdl;fadfas;dfd;asfa;dlsf;adsf;adsf
+                    asf
+                    asf
+
+                    fads
+                    fads
+                    fasd
+                    fasf
+                    asf
+                    sdaf
+                    asdfas
+                    df
+                    sad;fda;lfds;fdask;f;f
+                    Gregariousadsfadsfasfl;adfadsf;asdkljfadsf;sadfadsfads;fasdl;fadfas;dfd;asfa;dlsf;adsf;adsf
+                    asf
+                    asf
+
+                    fads
+                    fads
+                    fasd
+                    fasf
+                    asf
+                    sdaf
+                    asdfas
+                    df
+                    sad;fda;lfds;fdask;f;f
+                    Gregariousadsfadsfasfl;adfadsf;asdkljfadsf;sadfadsfads;fasdl;fadfas;dfd;asfa;dlsf;adsf;adsf
+                    asf
+                    asf
+
+                    fads
+                    fads
+                    fasd
+                    fasf
+                    asf
+                    sdaf
+                    asdfas
+                    df
+                    sad;fda;lfds;fdask;f;fGregariousadsfadsfasfl;adfadsf;asdkljfadsf;sadfadsfads;fasdl;fadfas;dfd;asfa;dlsf;adsf;adsf
+                    asf
+
+                    fads
+                    fads
+                    fasd
+                    fasf
+                    asf
+                    sdaf
+                    asdfas
+                    df
+                    sad;fda;lfds;fdask;f;f
+                    Gregariousadsfadsfasfl;adfadsf;asdkljfadsf;sadfadsfads;fasdl;fadfas;dfd;asfa;dlsf;adsf;adsf
+                    asf
+                    asf
+
+                    fads
+                    fads
+                    fasd
+                    fasf
+                    asf
+                    sdaf
+                    asdfas
+                    df
+                    sad;fda;lfds;fdask;f;f
+                    Gregariousadsfadsfasfl;adfadsf;asdkljfadsf;sadfadsfads;fasdl;fadfas;dfd;asfa;dlsf;adsf;adsf
+                    asf
+                    asf
+
+                    fads
+                    fads
+                    fasd
+                    fasf
+                    asf
+                    sdaf
+                    asdfas
+                    df
+                    sad;fda;lfds;fdask;f;f
+                    Gregariousadsfadsfasfl;adfadsf;asdkljfadsf;sadfadsfads;fasdl;fadfas;dfd;asfa;dlsf;adsf;adsf
+                    asf
+                    asf
+
+                    fads
+                    fads
+                    fasd
+                    fasf
+                    asf
+                    sdaf
+                    asdfas
+                    df
+                    sad;fda;lfds;fdask;f;f
+                    Gregariousadsfadsfasfl;adfadsf;asdkljfadsf;sadfadsfads;fasdl;fadfas;dfd;asfa;dlsf;adsf;adsf
+                    asf
+                    asf
+
+                    fads
+                    fads
+                    fasd
+                    fasf
+                    asf
+                    sdaf
+                    asdfas
+                    df
+                    sad;fda;lfds;fdask;f;fGregariousadsfadsfasfl;adfadsf;asdkljfadsf;sadfadsfads;fasdl;fadfas;dfd;asfa;dlsf;adsf;adsf
+                    asf
+
+                    fads
+                    fads
+                    fasd
+                    fasf
+                    asf
+                    sdaf
+                    asdfas
+                    df
+                    sad;fda;lfds;fdask;f;f
+                    Gregariousadsfadsfasfl;adfadsf;asdkljfadsf;sadfadsfads;fasdl;fadfas;dfd;asfa;dlsf;adsf;adsf
+                    asf
+                    asf
+
+                    fads
+                    fads
+                    fasd
+                    fasf
+                    asf
+                    sdaf
+                    asdfas
+                    df
+                    sad;fda;lfds;fdask;f;f
+                    Gregariousadsfadsfasfl;adfadsf;asdkljfadsf;sadfadsfads;fasdl;fadfas;dfd;asfa;dlsf;adsf;adsf
+                    asf
+                    asf
+
+                    fads
+                    fads
+                    fasd
+                    fasf
+                    asf
+                    sdaf
+                    asdfas
+                    df
+                    sad;fda;lfds;fdask;f;f
+                    Gregariousadsfadsfasfl;adfadsf;asdkljfadsf;sadfadsfads;fasdl;fadfas;dfd;asfa;dlsf;adsf;adsf
+                    asf
+                    asf
+
+                    fads
+                    fads
+                    fasd
+                    fasf
+                    asf
+                    sdaf
+                    asdfas
+                    df
+                    sad;fda;lfds;fdask;f;f
+                    Gregariousadsfadsfasfl;adfadsf;asdkljfadsf;sadfadsfads;fasdl;fadfas;dfd;asfa;dlsf;adsf;adsf
+                    asf
+                    asf
+
+                    fads
+                    fads
+                    fasd
+                    fasf
+                    asf
+                    sdaf
+                    asdfas
+                    df
+                    sad;fda;lfds;fdask;f;fGregariousadsfadsfasfl;adfadsf;asdkljfadsf;sadfadsfads;fasdl;fadfas;dfd;asfa;dlsf;adsf;adsf
+                    asf
+
+                    fads
+                    fads
+                    fasd
+                    fasf
+                    asf
+                    sdaf
+                    asdfas
+                    df
+                    sad;fda;lfds;fdask;f;f
+                    Gregariousadsfadsfasfl;adfadsf;asdkljfadsf;sadfadsfads;fasdl;fadfas;dfd;asfa;dlsf;adsf;adsf
+                    asf
+                    asf
+
+                    fads
+                    fads
+                    fasd
+                    fasf
+                    asf
+                    sdaf
+                    asdfas
+                    df
+                    sad;fda;lfds;fdask;f;f
+                    Gregariousadsfadsfasfl;adfadsf;asdkljfadsf;sadfadsfads;fasdl;fadfas;dfd;asfa;dlsf;adsf;adsf
+                    asf
+                    asf
+
+                    fads
+                    fads
+                    fasd
+                    fasf
+                    asf
+                    sdaf
+                    asdfas
+                    df
+                    sad;fda;lfds;fdask;f;f
+                    Gregariousadsfadsfasfl;adfadsf;asdkljfadsf;sadfadsfads;fasdl;fadfas;dfd;asfa;dlsf;adsf;adsf
+                    asf
+                    asf
+
+                    fads
+                    fads
+                    fasd
+                    fasf
+                    asf
+                    sdaf
+                    asdfas
+                    df
+                    sad;fda;lfds;fdask;f;f
+                    Gregariousadsfadsfasfl;adfadsf;asdkljfadsf;sadfadsfads;fasdl;fadfas;dfd;asfa;dlsf;adsf;adsf
+                    asf
+                    asf
+
+                    fads
+                    fads
+                    fasd
+                    fasf
+                    asf
+                    sdaf
+                    asdfas
+                    df
+                    sad;fda;lfds;fdask;f;f</div>
+            </div>
+        </div>
+        <div id = "flip-card">Flip Card</div>
+    </div>
+
+
+</body>
+
+</html>
