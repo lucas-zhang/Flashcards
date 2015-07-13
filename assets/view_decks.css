@@ -201,13 +201,13 @@ body {
     z-index: 200000;
     position: relative;
     top: 100;
-    left: 500;
     text-align: center;
     color: white;
     font-size: 32px;
     font-weight: 100;
     letter-spacing: 5px;
     width: 450;
+    margin: 0 auto;
 
 
 }
@@ -220,11 +220,11 @@ body {
     height: 100%;
     width: 100%;
     top: 0;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     border-radius: 5px;
     display: none;
     perspective: 1000;
-
 }
 
 
@@ -240,7 +240,7 @@ body {
     z-index: 200000;
     margin: 0 auto;
     top: 150;
-    transition: 1.5s;
+    transition: 0.6s;
     transform-style: preserve-3d;
 
 }
@@ -261,13 +261,15 @@ body {
 
 #front {
     background-color:white;
-    font-size: 24px;
+    font-size: 28px;
     letter-spacing: 3px;
     z-index: 2;
 
 }
 
 #back {
+    font-size: 18px;
+    letter-spacing: 2px; 
     background-color: white;
     transform: rotateY(180deg);
 
@@ -312,8 +314,14 @@ body {
     display: inline-block;
     padding: 30 40 30 40;
     max-width: 820;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    text-align: left;
 
 }
+
+
 .card-arrow {
     z-index: 200000;
     transition: all 0.5s;
@@ -330,12 +338,12 @@ body {
     width: 60;
 }
 #prev-arrow {
-    left: 130;
+    left: 7%;
     
 }
 
 #next-arrow {
-    left: 1230;
+    left: 88%;
     
 }
 .arrow-image {
