@@ -1,10 +1,10 @@
 /* Utility Stylesheets */
 
 a:link {
-    color: grey;
+    color: gray;
 }
 a:visited{
-    color: grey;
+    color: gray;
 }
 a:hover {
     color: white;
@@ -40,9 +40,9 @@ a:hover {
     height: 100%;
     padding: 20px 0px 10px 0px;
     display: inline-block;
-    margin-right: 40px;
+    margin-right: 80px;
     cursor: pointer;
-    color: grey;
+    color: gray;
 }
 
 .topbar-item:hover {
@@ -200,11 +200,11 @@ background: #edeae5;
 }
 
 #signup-link {
-    left: 1050px;
+    left: 1000px;
 }
 
 #logout-link {
-    left: 1020px;
+    left: 620px;
 }
 
 #message {

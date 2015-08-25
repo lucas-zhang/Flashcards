@@ -21,9 +21,11 @@
     {% else %}
         <nav class = "topbar">
             <ul>
-                <li class = "topbar-item" ><a id = "on-page">Home </a></li>
-                <li class = "topbar-item"><a href = "/profile">Profile</a></li>
-                <li class = "topbar-item" id = "logout-link"><a id = "logout-link"> Logout</a></li>
+            <li class = "topbar-item" ><a href = "/"  id = "on-page">Home </a></li>
+            <li class = "topbar-item" ><a href = "/profile">Dashboard</a></li>
+            <li class = "topbar-item" ><a href = "/make_deck">Create Deck</a></li>
+            <li class = "topbar-item" ><a href = "/view_decks">Manage Decks</a></li>
+            <li class = "topbar-item" id = "logout-link"><a href = '/logout'> Logout</a></li>
             </ul>
         </nav>
         <div id = "message">Hi {{fname}}! Hit 'View Flashcards' to see your decks and profile. </div>

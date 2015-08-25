@@ -60,7 +60,7 @@ class Flashcard(object):
     @cherrypy.expose
     def logout(self):
         cherrypy.lib.sessions.expire()
-        return "success"
+        raise cherrypy.HTTPRedirect("/")
         
 
 

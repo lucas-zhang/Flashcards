@@ -201,22 +201,6 @@ $(document).ready(function(){
         }
     });
 
-    //LOGOUT
 
-    function logout(e) {
-        $.ajax({
-        type: "POST",
-        url: "/logout",
-
-         })
-
-        .done(function(string) {
-            redirect("");
-
-        });
-       e.preventDefault();
-    }
-
-    $("#logout-link").click(logout);
 	 
 });
