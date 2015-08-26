@@ -145,6 +145,30 @@ class Flashcard(object):
 
 
         raise cherrypy.HTTPRedirect("/")
+    @cherrypy.expose
+    def edit_deck(self, deckID): #get request to generate the view
+        print('edit_deck python called')
+        tmpl = env.get_template('make_deck.html')
+        templateVars = {}
+
+        userID = cherrypy.session.get('userID')
+        if userID is not None:
+            print("user is authenticated")
+            cardData = json.loads(self.getCards(deckID))
+            curs.execute("SELECT deck_name FROM deck WHERE id = %s" %(deckID))
+            deckTitle = curs.fetchone()[0]
+            templateVars['cardData'] = cardData
+            templateVars['edit'] = True
+            templateVars['deckTitle'] = deckTitle
+            return tmpl.render(templateVars)
+        raise cherrypy.HTTPRedirect("/")
+
+
+    def saveEdits(self, deckTitle, frontArray, backArray):
+        return 
+
+        
+
 
     @cherrypy.expose
     def view_decks(self):
@@ -168,7 +192,7 @@ class Flashcard(object):
 
     @cherrypy.expose
     def getCards(self, deckID):
-        print("FUNCTION CALLED FUNCTION CALLED FUNCTION CALLED")
+
         userID = cherrypy.session.get('userID')
         if userID is not None:
             cardData = {}

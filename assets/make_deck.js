@@ -28,8 +28,10 @@ $(document).ready(function(){
     });
 
 
+
     //Create Deck functionality
-    $("#submit-button").click(function(e) {
+
+    commitFunc = function(e, url) {
         var frontArray = [];
         var backArray = [];
         $(".card-text").each(function(index){
@@ -42,7 +44,7 @@ $(document).ready(function(){
 
         $.ajax({
             type: "POST",
-            url: "/insertDeck",
+            url: url,
             data: {
                 "deckTitle": $("#deck-title").val(),
                 "frontArray": JSON.stringify(frontArray),
@@ -55,7 +57,10 @@ $(document).ready(function(){
 
         });
         e.preventDefault();
-    });
+    }
+    $("#submit-button").click(commitFunc(e, '/insertDeck'));
+    //Edit Deck
+    $("#edit-button").click(commitFunc(e, '/saveEdits'));
 
 
 

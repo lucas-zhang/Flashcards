@@ -1,12 +1,12 @@
 /* Utility Stylesheets */
 
-a:link {
+ul a:link {
     color: gray;
 }
-a:visited{
+ul a:visited{
     color: gray;
 }
-a:hover {
+ul a:hover {
     color: white;
 }
 .main-item a:visited {

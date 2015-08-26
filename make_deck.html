@@ -19,8 +19,41 @@
             <li class = "topbar-item" id = "logout-link"><a href = "/logout" id = "logout-link">Logout</a></li>
         </ul>
     </nav>
-    <div id = "message">Hi {{fname}}! Hit 'View Flashcards' to see your decks and profile. </div>
+    
+        <div id = "message">Hi {{fname}}! Hit 'Dashboard' to see more options. </div>
+    
+
+    {% if edit == true %}
+        <div class = "welcome-message">You're editing the deck: {deckTitle}!</div>
+        <input type = "text" id = "deck-title" placeholder = "Enter your deck title"/>
+        <div id = "card-space">
+            <div class = "column-title">Words</div>
+            <div class = "column-title">Definitions</div>
+        {%set i = 0 %}
+        {% for key, value in cardData.iteritems() %}
+            {%set frontKey = ["front", i]%}
+            {%set backKey = ["back", i]%}
+            <div class="card-row">
+                <img src = "/static/img/x-icon.png" class = "exit-img">
+                <textarea class = "card-text">{{cardData[frontKey|join]}}</textarea>
+                <textarea class = "card-text">{{cardData[backKey|join]}}</textarea>
+            </div>
+            {%set i = i + 1%}
+        {%endfor%}
+        </div>
+
+        </div>
+        <div id = "button-container">
+            <div id = "undo-button">Undo Delete</div>
+            <div id = "submit-button"> Create Deck</div>
+            <div id = "next-button">+ New Card</div>
+            
+        </div>
+        
+
+    {%else%}
     <div class = "welcome-message">Create your very own deck! </div>
+
     <input type = "text" id = "deck-title" placeholder = "Enter your deck title"/>
     <div id = "card-space">
         <div class = "column-title">Words</div>
@@ -44,6 +77,7 @@
         <div id = "next-button">+ New Card</div>
         
     </div>
+    {%endif%}
 
    
 </body>

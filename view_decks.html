@@ -31,13 +31,16 @@
                 <div class = "header-row">
                     <span class = "list-header" id = "number-header">Deck #</span>
                     <span class = "list-header" id = "title-header">Deck Title</span>
-                    <span class = "list-header">Date Created</span>
                 </div>
                 <div class = "inner-row">
-                    <span id = "list-deck-number" class = "deck-row-item">{{i + 1}}</span>
-                    <span id = "list-deck-title" class = "deck-row-item">{{deckTitle}}</span>
+                    <div id = "list-deck-number" class = "deck-row-item">{{i + 1}}</div>
+                    <div id = "list-deck-title" class = "deck-row-item">{{deckTitle}}</div>
+                </div>
+                <div class = "inner-row">
+                    <div id = "edit-button" class = "view-button">Edit Deck</div>
                     <div id = "view-list" class = "view-button">View as List</div>
                     <div id = "view-cards" class = "view-button">View as Cards</div>
+                    <div class = "view-button">Quiz Deck</div>
                 </div>
             </div>
             <div class = "hidden-container">
@@ -68,7 +71,8 @@
             </div>
         </div>
         <div id = "flip-card">Flip Card</div>
-        <div id = "card-count">49/50</div>
+        <div id = "side-indicator">Front</div>
+        <div id = "card-count">0</div>
     </div>
 
 
