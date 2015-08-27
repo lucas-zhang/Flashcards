@@ -28,39 +28,68 @@ $(document).ready(function(){
     });
 
 
+    function request(path, params, method) {
 
+        // The rest of this code assumes you are not using a library.
+        // It can be made less wordy if you use one.
+        var form = document.createElement("form");
+        form.setAttribute("method", method);
+        form.setAttribute("action", path);
+
+        for(var key in params) {
+            if(params.hasOwnProperty(key)) {
+                var hiddenField = document.createElement("input");
+                hiddenField.setAttribute("type", "hidden");
+                hiddenField.setAttribute("name", key);
+                hiddenField.setAttribute("value", params[key]);
+
+                form.appendChild(hiddenField);
+             }
+        }
+
+        document.body.appendChild(form);
+        form.submit();
+    };
     //Create Deck functionality
-
-    commitFunc = function(e, url) {
+    $.urlParam = function(name){
+        var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+        if (results == null) {
+            return null;
+        }
+        return results[1];
+    }
+    commitFunc = function(url) {
         var frontArray = [];
         var backArray = [];
+        var deckID = $.urlParam('deckID');
         $(".card-text").each(function(index){
+            if ($(this).css('display') == 'none' || parseInt($(this).css('opacity')) < 1) {
+                window.alert("display none if called");
+                return "continue"; // acts as a continue
+            }
             if (index % 2 == 0) {
                 frontArray.push($(this).val());
             } else {
                 backArray.push($(this).val());
             }
-        });
-
-        $.ajax({
-            type: "POST",
-            url: url,
-            data: {
-                "deckTitle": $("#deck-title").val(),
-                "frontArray": JSON.stringify(frontArray),
-                "backArray": JSON.stringify(backArray)
-            }
-        })
-
-        .done(function(string) {
-
 
         });
-        e.preventDefault();
-    }
-    $("#submit-button").click(commitFunc(e, '/insertDeck'));
+        request(url, {'deckTitle': $("#deck-title").val(), 
+            'frontArray':JSON.stringify(frontArray), 
+            'backArray': JSON.stringify(backArray),
+            'deckID': deckID
+        }, 'POST');
+
+
+
+    };
+    $("#create-submit").click(function() {
+        commitFunc('/insertDeck');
+    });
     //Edit Deck
-    $("#edit-button").click(commitFunc(e, '/saveEdits'));
+    $("#edit-submit").click(function(){
+        commitFunc('/saveEdits')
+    });
 
 
 

@@ -37,12 +37,14 @@
                     <div id = "list-deck-title" class = "deck-row-item">{{deckTitle}}</div>
                 </div>
                 <div class = "inner-row">
+                    <div id = "delete-button" class = "view-button">Delete Deck</div>
                     <div id = "edit-button" class = "view-button">Edit Deck</div>
                     <div id = "view-list" class = "view-button">View as List</div>
                     <div id = "view-cards" class = "view-button">View as Cards</div>
                     <div class = "view-button">Quiz Deck</div>
                 </div>
             </div>
+
             <div class = "hidden-container">
                     <div id = "hidden-title-row">
                         <div class = "hidden-title" id = "hidden-card-num-title">Card #</div>
@@ -56,7 +58,11 @@
         {%endfor %}
     </div>
 
-
+    <div class = "confirm-container">
+        Are you sure you want to delete this deck?
+        <div id = "yes-button">Yes</div>
+        <div id = "no-button">No</div>
+    </div>
     <div id = "card-modal">
         <div id = "card-view-overlay"></div>
         <div class = "deck-header">Viewing: example deck</div>

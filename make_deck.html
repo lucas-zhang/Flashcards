@@ -14,7 +14,11 @@
         <ul>
             <li class = "topbar-item" ><a href = "/">Home </a></li>
             <li class = "topbar-item" ><a href = "/profile">Dashboard</a></li>
-            <li class = "topbar-item" ><a id = "on-page" href = "/make_deck">Create Deck</a></li>
+            {% if edit == true %}
+                <li class = "topbar-item" ><a id = "on-page">Edit Deck</a></li>
+            {%else%}
+                <li class = "topbar-item" ><a id = "on-page">Create Deck</a></li>
+            {%endif%}
             <li class = "topbar-item" ><a href = "/view_decks">Manage Decks</a></li>
             <li class = "topbar-item" id = "logout-link"><a href = "/logout" id = "logout-link">Logout</a></li>
         </ul>
@@ -24,13 +28,12 @@
     
 
     {% if edit == true %}
-        <div class = "welcome-message">You're editing the deck: {deckTitle}!</div>
-        <input type = "text" id = "deck-title" placeholder = "Enter your deck title"/>
+        <div class = "welcome-message">You're now editing the deck: "{{deckTitle}}"!</div>
+        <input type = "text" value = "{{deckTitle}}"id = "deck-title" placeholder = "Enter your deck title"/>
         <div id = "card-space">
             <div class = "column-title">Words</div>
             <div class = "column-title">Definitions</div>
-        {%set i = 0 %}
-        {% for key, value in cardData.iteritems() %}
+        {% for i in range((cardData|length/2)|int) %}
             {%set frontKey = ["front", i]%}
             {%set backKey = ["back", i]%}
             <div class="card-row">
@@ -38,14 +41,13 @@
                 <textarea class = "card-text">{{cardData[frontKey|join]}}</textarea>
                 <textarea class = "card-text">{{cardData[backKey|join]}}</textarea>
             </div>
-            {%set i = i + 1%}
         {%endfor%}
         </div>
 
         </div>
         <div id = "button-container">
             <div id = "undo-button">Undo Delete</div>
-            <div id = "submit-button"> Create Deck</div>
+            <div id = "edit-submit" class = "submit-button" >Save Edits</div>
             <div id = "next-button">+ New Card</div>
             
         </div>
@@ -73,7 +75,7 @@
     </div>
     <div id = "button-container">
         <div id = "undo-button">Undo Delete</div>
-        <div id = "submit-button"> Create Deck</div>
+        <div id = "create-submit" class = "submit-button"> Create Deck</div>
         <div id = "next-button">+ New Card</div>
         
     </div>

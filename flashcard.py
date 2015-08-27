@@ -109,11 +109,12 @@ class Flashcard(object):
 
     @cherrypy.expose
     def make_deck(self):
+        print('make_deck called')
         userID = cherrypy.session.get('userID')
         if userID is not None:
 
             tmpl = env.get_template('make_deck.html')
-            templateVars = {}
+            templateVars = {'edit': False}
 
             curs.execute("SELECT * FROM user WHERE id = %s" %userID)
             userRow= curs.fetchone()
@@ -123,7 +124,7 @@ class Flashcard(object):
         raise cherrypy.HTTPRedirect("/")
 
     @cherrypy.expose
-    def insertDeck(self, deckTitle, frontArray, backArray):
+    def insertDeck(self, deckTitle, frontArray, backArray, deckID = None):
         frontArray = json.loads(frontArray)
         backArray = json.loads(backArray)
         userID = cherrypy.session.get('userID')
@@ -141,7 +142,7 @@ class Flashcard(object):
                     %(deckID, frontArray[i], backArray[i]))
 
             conn.commit()
-            return "success"
+            raise cherrypy.HTTPRedirect("/view_decks")
 
 
         raise cherrypy.HTTPRedirect("/")
@@ -163,9 +164,28 @@ class Flashcard(object):
             return tmpl.render(templateVars)
         raise cherrypy.HTTPRedirect("/")
 
+    @cherrypy.expose
+    def saveEdits(self, deckID, deckTitle, frontArray, backArray):
+        frontArray = json.loads(frontArray)
+        backArray = json.loads(backArray)
+        tmpl = env.get_template('make_deck.html')
+        templateVars = {}
+        userID = cherrypy.session.get('userID')
+        if userID is not None:
+            print("saveEdits user authenticated")
+            curs.execute("""UPDATE deck SET deck_name = '%s' WHERE id = %s """ 
+                %(deckTitle, deckID))
+            curs.execute("""DELETE from card WHERE deck_id = %s""" %(deckID))
 
-    def saveEdits(self, deckTitle, frontArray, backArray):
-        return 
+            for i in range(len(frontArray)):
+                curs.execute("""INSERT INTO card (deck_id, front, back) 
+                    VALUES(%s, '%s', '%s')""" 
+                    %(deckID, frontArray[i], backArray[i]))
+
+            conn.commit()
+            raise cherrypy.HTTPRedirect("/view_decks")
+
+        raise cherrypy.HTTPRedirect("/")
 
         
 
@@ -225,7 +245,9 @@ class Flashcard(object):
 
     def isValidCred(self, username, password):
         curs.execute("SELECT * FROM user WHERE username = '%s'" %username)
+        print(username)
         userRow= curs.fetchone()
+        print(userRow)
         return userRow is not None and userRow[2] == password 
 
     def areFieldsFull(self, fields):

@@ -12,16 +12,33 @@ $(document).ready(function(){
     });
 
     //edit request
+    function request(path, params, method) {
+
+        // The rest of this code assumes you are not using a library.
+        // It can be made less wordy if you use one.
+        var form = document.createElement("form");
+        form.setAttribute("method", method);
+        form.setAttribute("action", path);
+
+        for(var key in params) {
+            if(params.hasOwnProperty(key)) {
+                var hiddenField = document.createElement("input");
+                hiddenField.setAttribute("type", "hidden");
+                hiddenField.setAttribute("name", key);
+                hiddenField.setAttribute("value", params[key]);
+
+                form.appendChild(hiddenField);
+             }
+        }
+
+        document.body.appendChild(form);
+        form.submit();
+    }
     $(document).on("click", "#edit-button", function(e) {
         var deckID = $(this).parent().parent().attr("data-id");
-        $.ajax({
-            url:   "/edit_deck",
-            data:  {'deckID': deckID},
-            async: false
-        });
-        e.preventDefault();
-        console.log("ajax done");
+        request("/edit_deck", {deckID: deckID}, 'GET')
     });
+
     //List view code
 
     $(document).on("click", "#view-list", function(e){
