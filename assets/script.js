@@ -104,7 +104,7 @@ $(document).ready(function(){
 
 
 
-    $("#signup-link").click(function() {
+    $("#signup-link,#signup-button").click(function() {
         $("#signup-modal-container").show();
         setTimeout(function(){$("input[name='signup-fname']").focus()},5);
                 

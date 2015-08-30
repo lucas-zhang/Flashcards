@@ -16,8 +16,9 @@
 
             </ul>
         </nav>
-        <div id = "message"> Please login or signup to view and create your flashcards. </div>
 
+        <div id = "purpose">Impress your friends and become a vocab master<br> <br>Create, manage, and view your vocab cards <br><br> Self test with an interactive quiz feature</div>
+        <div id = "signup-button" class = "button-main">Signup</div>
     {% else %}
         <nav class = "topbar">
             <ul>
@@ -28,7 +29,10 @@
             <li class = "topbar-item" id = "logout-link"><a href = '/logout'> Logout</a></li>
             </ul>
         </nav>
-        <div id = "message">Hi {{fname}}! Hit 'View Flashcards' to see your decks and profile. </div>
+
+        <div id = "message" style = "color:black">Hi {{fname}}, welcome to Vocab Master! Click Dashboard to get started. </div>
+        <div id = "purpose">Impress your friends and become a vocab master<br> <br>Create, manage, and view your vocab cards <br><br> Self test with an interactive quiz feature</div>
+        <a href = "/profile"><div class = "button-main">Dashboard</div></a>
 
     {% endif %}
 	<!-- Login Modal Box -->
@@ -45,7 +49,7 @@
 					<div class = "modal-button" id = "login-cancel">Cancel</div>
 
 				</div>
-                    <div class = "error"id = "login-error"></div>
+            <div class = "error"id = "login-error"></div>
 
 			</div>
 	</div>
@@ -54,12 +58,12 @@
 			<div class="modal-box" id = "signup-modal-box">
 				<div class="modal-header">Sign Up</div>
 				<div class = "modal-content">
-                    <input type = "text" name = "signup-fname" class = "modal-inputBox" placeholder = "First Name" />
-                    <input type = "text" name = "signup-lname" class = "modal-inputBox" placeholder = "Last Name" />
+          <input type = "text" name = "signup-fname" class = "modal-inputBox" placeholder = "First Name" />
+          <input type = "text" name = "signup-lname" class = "modal-inputBox" placeholder = "Last Name" />
 					<input type = "text" name = "signup-username" class = "modal-inputBox" placeholder = "Enter Username" />
 					<input type = "password" name = "signup-password" class = "modal-inputBox" placeholder = "Enter Password" />
-                    <input type = "password" name = "signup-password-verify" class = "modal-inputBox" placeholder = "Enter Password Again" />
-                    <input type = "email" name = "signup-email" class = "modal-inputBox" placeholder = "Email" />
+          <input type = "password" name = "signup-password-verify" class = "modal-inputBox" placeholder = "Enter Password Again" />
+          <input type = "email" name = "signup-email" class = "modal-inputBox" placeholder = "Email" />
 
 				</div>
 				<div class = "modal-footer">
@@ -78,7 +82,7 @@
 		<div id="background-overlay"></div>
 	</div>
 	<div id="hero">
-		<div id="heading">Flashcards</div>
+		<div id="heading">Vocab Master</div>
 	</div>
 	
 </body>
