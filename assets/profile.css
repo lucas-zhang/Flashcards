@@ -17,15 +17,16 @@
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   -o-transition: all 0.5s;
-  position: relative;
+  font-size: 24px;
+    position: relative;
     cursor: pointer;
     width: 250px;
     display: inline-block;
     padding: 200px 50px 200px 50px;
     margin-left: 30px;
     margin-top: 30px;
-    color: #5E5E5E;
-    background-color: #5CE68A;
+    color: white;
+    background-color: #498DD6;;
     border-radius: 5px;
 }
 
@@ -35,6 +36,16 @@
   -moz-transition: all 0.5s;
   -o-transition: all 0.5s;
   color: black;
-  background-color: #72F29D;
+  background-color: #63A4EB;
 
+}
+#manage {
+      transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  background-color: #23C48C;
+}
+#manage:hover {
+  background-color: #50DEAC;
 }
