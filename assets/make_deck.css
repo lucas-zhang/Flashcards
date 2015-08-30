@@ -36,8 +36,9 @@
 
 .welcome-message {
     margin-top: 150px;
-    letter-spacing: 1px;
-    font-size: 24px;
+    letter-spacing: 3px;
+    font-size: 30px;
+    font-weight: 100;
     text-align: center;
 }
 
@@ -121,6 +122,14 @@
     border-radius: 2px;
     letter-spacing: 1px;
     text-align: center;
+}
+.submit-button:hover {
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    color: black;
+
 }
 
 #undo-button {

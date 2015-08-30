@@ -1,7 +1,9 @@
 .welcome-message {
-    font-size: 24px;
-    width: 600px;
+    font-size: 32px;
+    width: 1000px;
     text-align: center;
+    font-weight: 100;
+    letter-spacing: 3px;
     margin: 130 auto 25 auto;
 }
 
@@ -11,13 +13,28 @@
 }
 
 .button {
+        transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  position: relative;
     cursor: pointer;
-    width: 150px;
+    width: 250px;
     display: inline-block;
-    padding: 10px 15px 10px 15px;
+    padding: 200px 50px 200px 50px;
     margin-left: 30px;
     margin-top: 30px;
-    color: black;
+    color: #5E5E5E;
     background-color: #5CE68A;
-    border-radius: 2px;
+    border-radius: 5px;
+}
+
+.button:hover {
+    transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  color: black;
+  background-color: #72F29D;
+
 }

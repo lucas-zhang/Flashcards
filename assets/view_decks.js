@@ -36,7 +36,14 @@ $(document).ready(function(){
     }
     $(document).on("click", "#edit-button", function(e) {
         var deckID = $(this).parent().parent().attr("data-id");
-        request("/edit_deck", {deckID: deckID}, 'GET')
+        request("/edit_deck", {deckID: deckID}, 'GET');
+    });
+
+    //quiz request
+
+    $(document).on("click", "#quiz-button", function() {
+        var deckID = $(this).parent().parent().attr("data-id");
+        request("/quiz_deck", {deckID: deckID}, 'GET');
     });
 
     //List view code

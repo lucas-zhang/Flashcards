@@ -194,7 +194,6 @@ class Flashcard(object):
     def view_decks(self):
         tmpl = env.get_template('view_decks.html')
         templateVars = {}
-
         userID = cherrypy.session.get('userID')
         if userID is not None:
             deckTitles = []
@@ -207,6 +206,17 @@ class Flashcard(object):
 
             templateVars['deckTitles'] = deckTitles
             templateVars['deckIDs'] = deckIDs
+            return tmpl.render(templateVars)
+        raise cherrypy.HTTPRedirect("/")
+
+    @cherrypy.expose
+    def quiz_deck(self, deckID):
+        tmpl = env.get_template('quiz_deck.html')
+        templateVars = {}
+        userID = cherrypy.session.get('userID')
+        if userID is not None:
+            curs.execute("SELECT deck_name FROM deck where id = %s" %(deckID))
+            templateVars['deckName'] = curs.fetchone()[0];
             return tmpl.render(templateVars)
         raise cherrypy.HTTPRedirect("/")
 
