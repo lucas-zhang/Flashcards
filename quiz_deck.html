@@ -1,0 +1,63 @@
+
+<html>
+<head>
+  <title>Flashcards</title>
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600" rel="stylesheet" type="text/css"><link href='http://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="/static/style.css" />
+  <link rel="stylesheet" type="text/css" href="/static/view_decks.css" />
+  <link rel="stylesheet" type="text/css" href="/static/make_deck.css" />
+  <link rel="stylesheet" type="text/css" href="/static/quiz_deck.css" />
+  <script src="/static/jquery-1.9.1.js"></script>
+  <script src="/static/view_decks.js"></script>
+  <script src="/static/jquery.easing.1.3.js"></script>
+  <script src="/static/quiz_deck.js"></script>
+
+</head>
+<body>
+
+  <nav class = "topbar">
+      <ul>
+          <li class = "topbar-item" ><a href = "/">Home </a></li>
+          <li class = "topbar-item" ><a href = "/profile" >Dashboard</a></li>
+          <li class = "topbar-item" ><a href = "/make_deck">Create Deck</a></li>
+          <li class = "topbar-item" ><a href = "/view_decks">Manage Decks</a></li>
+          <li class = "topbar-item" id = "logout-link"><a href = "/logout" id = "logout-link">Logout</a></li>
+      </ul>
+  </nav>
+  <div id = "header-container">
+    <div id = "currently-quizzing">Quizzing "{{deckName}}"</div>
+    <div id = "cards-left">Cards Left: 49</div>
+  </div>
+
+  <div id = "after-quiz">
+    <div id = "after-message"></div>
+    <div id = "requiz-button">Re-Quiz Incorrect Cards</div>
+  </div>
+<div id = "quiz-container">
+    <div id = "score">Current Score: 11/20</div>
+  
+    <img src = "/static/img/back.png" id = "back-icon">
+    <img src = "/static/img/flip.png" id = "flip-icon">
+    <div class = "current-card">
+        <div id = "front">
+            <div id = "front-text">Deck Title: {{deckName}}</div>
+        </div>
+        <div id = "back">
+            <div id = "back-text"></div>
+        </div>
+    </div>
+  <div id = "before-quiz">
+    <div id = "before-message">Start quiz with deck ordering:</div>
+    <div id = "default">Default</div>
+    <div id = "shuffle">Random</div>
+  </div>
+    <div id = "flipNotice">Click the flip icon to see if you're correct!</div>
+    <div id = "correctContainer">
+      <div id = "isCorrect">Did you correctly remember this card?</div>
+      <div id = "correct">Yes</div>
+      <div id = "incorrect">No</div>
+    </div>
+</div>
+
+</body>
+</html>
