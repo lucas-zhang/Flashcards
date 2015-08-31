@@ -85,7 +85,7 @@ background: #edeae5;
     cursor: pointer;
     font-size: 18px;
     position: fixed;
-    top: 650px;
+    top: 610px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 99;
@@ -109,14 +109,14 @@ background: #edeae5;
 }
 #purpose {
     width: 680px;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 200;
     color: black;
     z-index: 99;
     letter-spacing: 3px;
     line-height: 175%;
     position: fixed;
-    top: 320px;
+    top: 370px;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
@@ -130,15 +130,15 @@ background: #edeae5;
 #hero {
     position: absolute;
     color: black;
-    top: 150px;
-    right: 400px;
+    top: 220px;
+    right: 460px;
     text-align: right;
 }
 #subheading {
     font-size: 24px;
 }
 #heading {
-    font-size: 90px;
+    font-size: 75px;
     font-weight: 200;
     letter-spacing: 3px;
 }
