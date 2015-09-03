@@ -6,9 +6,9 @@ import json
 
 import cherrypy
 from jinja2 import Environment, FileSystemLoader
-env = Environment(loader=FileSystemLoader(''))
+env = Environment(loader=FileSystemLoader('public/views'))
 
-conn = mdb.connect("localhost","root","lzdbpass","lucas_test")
+conn = mdb.connect(host= "localhost",user= "root",passwd= "lzdbpass",db="flashcards") #change this accordingly;
 curs = conn.cursor()
 
 
@@ -275,7 +275,7 @@ if __name__ == '__main__':
          },
          '/static': {
              'tools.staticdir.on': True,
-             'tools.staticdir.dir': './assets'
+             'tools.staticdir.dir': './public'
          }
     }
     cherrypy.quickstart(Flashcard(), '/', conf)
