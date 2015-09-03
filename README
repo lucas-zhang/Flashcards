@@ -1,3 +1,5 @@
-Flashcards app made with cherrypy. Not deployed yet, but you can localhost.
+To use this app, install cherrypy and mysql. Then pipe in database_layout.sql into your mysql to create the relevant tables. Change line 11 of flashcard.py to match your db connection. Note that if you used database_layout.sql to create the tables, do NOT change the db = ‘flashcards’ argument on line 11 of flashcard.py.
+
+
 
 "Both" contributors lucas-zhang and lzhang15 are both my accounts. I just authored most of my commits from lzhang15 since I created a new github account and forgot to change the global git email via command line.
